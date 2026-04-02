@@ -24,6 +24,9 @@ The question is not how to scale yet, but where the current single-server design
 
 **Visible symptom:** Message send delays, retries, and user-visible “failed to send” states.
 
+<img width="1031" height="714" alt="image" src="https://github.com/user-attachments/assets/8ec1980f-4411-40ee-820b-4a3aaf4adb56" />
+
+
 ### 2) Memory Pressure (Immediate growth bottleneck)
 **What fails:** In-memory message structures, connection/session objects, and temporary buffers.
 
@@ -33,6 +36,9 @@ The question is not how to scale yet, but where the current single-server design
 - GC pauses increase as object count grows, reducing useful throughput.
 
 **Visible symptom:** Process pauses, unstable latency, then potential OOM kill/crash.
+
+<img width="578" height="780" alt="image" src="https://github.com/user-attachments/assets/38ad0a31-376a-4fba-811e-c6c9dfb66579" />
+
 
 ### 3) Database/Storage Write Contention
 **What fails:** Durable storage commit path and indexes for channel/message lookup.
@@ -44,6 +50,9 @@ The question is not how to scale yet, but where the current single-server design
 
 **Visible symptom:** Increasing DB commit latency; app queue grows even if app CPU is available.
 
+<img width="1034" height="793" alt="image" src="https://github.com/user-attachments/assets/6034686d-ba0d-453f-b0c2-623569058a03" />
+
+
 ### 4) Read Amplification on the Hot Channel
 **What fails:** Message fetch APIs and fan-out delivery path.
 
@@ -54,6 +63,9 @@ The question is not how to scale yet, but where the current single-server design
 
 **Visible symptom:** Slow channel load, partial history, or stale message views.
 
+<img width="576" height="300" alt="image" src="https://github.com/user-attachments/assets/63070744-bdb6-42eb-9a84-cc6866453224" />
+
+
 ### 5) Network and Connection Management
 **What fails:** Socket accept loop, websocket broker, and outbound bandwidth.
 
@@ -63,6 +75,9 @@ The question is not how to scale yet, but where the current single-server design
 - Single node NIC and kernel socket buffers become bottlenecks.
 
 **Visible symptom:** Connection drops, reconnect storms, and cascading load spikes.
+
+<img width="662" height="594" alt="image" src="https://github.com/user-attachments/assets/e4dfbdb6-8d39-4344-aa9f-68eebd22c4e2" />
+
 
 ## What Data Grows Fastest
 
