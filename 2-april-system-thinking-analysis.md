@@ -8,6 +8,9 @@ A Discord-like chat platform suddenly experiences:
 
 The question is not how to scale yet, but where the current single-server design fails first and why.
 
+<img width="410" height="465" alt="image" src="https://github.com/user-attachments/assets/a4572ac9-6496-480c-8bc8-18f932f53584" />
+
+
 ## Where the System Will Fail First
 
 ### 1) Write Path Saturation (Earliest failure)
