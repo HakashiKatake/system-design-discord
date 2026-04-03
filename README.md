@@ -15,7 +15,7 @@ Build and evolve a chat platform simulation from a naive single-server model tow
 | Date | Focus | Required Deliverable | Current Status | Evidence |
 |---|---|---|---|---|
 | 2 April | System Thinking | 1-page failure analysis (no coding) | Done | [2-april-system-thinking-analysis.md](2-april-system-thinking-analysis.md) |
-| 3 April | Basic System | Working chat system + message count output | Done | [3-april-basic-chat-system.py](3-april-basic-chat-system.py) |
+| 3 April | Basic System | Working chat system + message count output | Done | [3-april-basic-chat-system.py](3-april-basic-chat-system.py) <img width="478" height="77" alt="Screenshot 2026-04-03 at 6 12 30 PM" src="https://github.com/user-attachments/assets/3f386e57-db7f-4103-8477-063dee9a439d" />|
 | 4 April | Scaling Awareness | Large-load simulation + short observation note | Pending | Not started |
 | 5 April | Shards Introduction | Independent shards storing data separately | Pending | Not started |
 | 6 April | User-Based Sharding | Route by user_id + uneven distribution output | Pending | Not started |
@@ -58,10 +58,3 @@ python 3-april-basic-chat-system.py
 - `3-april-basic-chat-system.py` -> Day 3 working code
 - `Assignment_ “When Chat Systems Break” - A Realistic Sharding Simulation.md` -> assignment brief (markdown)
 - `Assignment_ “When Chat Systems Break” - A Realistic Sharding Simulation.pdf` -> assignment brief (original)
-
-## Submission Strategy
-
-To match assignment expectations:
-- commit progress daily
-- keep each day's deliverable in separate files
-- include observations and logs for simulation days
