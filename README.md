@@ -17,6 +17,8 @@ Build and evolve a chat platform simulation from a naive single-server model tow
 | 2 April | System Thinking | 1-page failure analysis (no coding) | Done | [2-april-system-thinking-analysis.md](2-april-system-thinking-analysis.md) |
 | 3 April | Basic System | Working chat system + message count output | Done | [3-april-basic-chat-system.py](3-april-basic-chat-system.py) <img width="478" height="77" alt="Screenshot 2026-04-03 at 6 12 30 PM" src="https://github.com/user-attachments/assets/3f386e57-db7f-4103-8477-063dee9a439d" />|
 | 4 April | Scaling Awareness | Large-load simulation + short observation note | Pending | Not started |
+| 3 April | Basic System | Working chat system + message count output | Done | [3-april-basic-chat-system.py](3-april-basic-chat-system.py) |
+| 4 April | Scaling Awareness | Large-load simulation + short observation note | Done | [4-april-scaling-awareness.py](4-april-scaling-awareness.py), [4-april-observation-note.md](4-april-observation-note.md) |
 | 5 April | Shards Introduction | Independent shards storing data separately | Pending | Not started |
 | 6 April | User-Based Sharding | Route by user_id + uneven distribution output | Pending | Not started |
 | 7 April | Channel-Based Sharding | Route by channel_id + comparison note | Pending | Not started |
@@ -43,6 +45,16 @@ Sample output:
 - Channels: 3
 - Total messages: 10
 
+### Day 4 (4 April)
+Implemented a single-server scaling simulation with measured load behavior:
+- Small-load run (10 users, 1,000 messages)
+- Large-load run (1,000 users, 100,000 messages)
+- Runtime and memory comparison to show scaling stress
+
+Artifacts:
+- `4-april-scaling-awareness.py`
+- `4-april-observation-note.md`
+
 ## How to Run (Day 3)
 
 From repository root:
@@ -52,9 +64,20 @@ source .venv/bin/activate
 python 3-april-basic-chat-system.py
 ```
 
+## How to Run (Day 4)
+
+From repository root:
+
+```bash
+source .venv/bin/activate
+python 4-april-scaling-awareness.py
+```
+
 ## Repository Structure
 
 - `2-april-system-thinking-analysis.md` -> Day 2 written analysis
 - `3-april-basic-chat-system.py` -> Day 3 working code
+- `4-april-scaling-awareness.py` -> Day 4 load simulation code
+- `4-april-observation-note.md` -> Day 4 short observation note
 - `Assignment_ “When Chat Systems Break” - A Realistic Sharding Simulation.md` -> assignment brief (markdown)
 - `Assignment_ “When Chat Systems Break” - A Realistic Sharding Simulation.pdf` -> assignment brief (original)
