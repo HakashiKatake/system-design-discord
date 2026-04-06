@@ -16,8 +16,8 @@ Build a chat simulation from a naive single-server system toward sharded behavio
 | 2 April | System Thinking | 1-page failure analysis (no coding) | Done | [2nd-april/2-april-system-thinking-analysis.md](2nd-april/2-april-system-thinking-analysis.md) |
 | 3 April | Basic System | Working chat system + message count output | Done | [3rd-april/3-april-basic-chat-system.py](3rd-april/3-april-basic-chat-system.py) |
 | 4 April | Scaling Awareness | Large-load simulation + short observation note | Done | [4th-april/4-april-scaling-awareness.py](4th-april/4-april-scaling-awareness.py), [4th-april/4-april-observation-note.md](4th-april/4-april-observation-note.md) |
-| 5 April | Shards Introduction | Independent shards storing data separately | Pending | Not started |
-| 6 April | User-Based Sharding | Route using user_id + shard distribution output | Pending | Not started |
+| 5 April | Shards Introduction | Independent shards storing data separately | Done | [5th-april/5-april-shards-introduction.py](5th-april/5-april-shards-introduction.py), [5th-april/5-april-output-note.md](5th-april/5-april-output-note.md) |
+| 6 April | User-Based Sharding | Route using user_id + shard distribution output | Done | [6th-april/6-april-user-based-sharding.py](6th-april/6-april-user-based-sharding.py), [6th-april/6-april-observation-note.md](6th-april/6-april-observation-note.md) |
 | 7 April | Channel-Based Sharding | Route using channel_id + comparison note | Pending | Not started |
 | 8 April | Hash-Based Sharding | Hash routing + key-choice explanation | Pending | Not started |
 | 9 April | Stress + Failure Simulation | Logs + final code + analysis | Pending | Not started |
@@ -47,6 +47,18 @@ Implemented single-server scaling simulation with measured results:
 - Scenario B: 1,000 users, 100,000 messages
 - runtime, throughput, and memory comparison
 
+### Day 5 (5 April)
+Implemented shard introduction with independent shard storage:
+- 3 shards with per-shard `messages` list
+- baseline routing with round-robin
+- printed messages per shard
+
+### Day 6 (6 April)
+Implemented user-based sharding and simulated influencer spike:
+- routing rule based on `user_id % num_shards`
+- one influencer generated 5,000 messages
+- clear imbalance observed in shard distribution
+
 ## How to Run
 
 From repository root:
@@ -55,6 +67,8 @@ From repository root:
 source .venv/bin/activate
 python 3rd-april/3-april-basic-chat-system.py
 python 4th-april/4-april-scaling-awareness.py
+python 5th-april/5-april-shards-introduction.py
+python 6th-april/6-april-user-based-sharding.py
 ```
 
 ## Repository Structure
@@ -63,5 +77,9 @@ python 4th-april/4-april-scaling-awareness.py
 - [3rd-april/3-april-basic-chat-system.py](3rd-april/3-april-basic-chat-system.py)
 - [4th-april/4-april-scaling-awareness.py](4th-april/4-april-scaling-awareness.py)
 - [4th-april/4-april-observation-note.md](4th-april/4-april-observation-note.md)
+- [5th-april/5-april-shards-introduction.py](5th-april/5-april-shards-introduction.py)
+- [5th-april/5-april-output-note.md](5th-april/5-april-output-note.md)
+- [6th-april/6-april-user-based-sharding.py](6th-april/6-april-user-based-sharding.py)
+- [6th-april/6-april-observation-note.md](6th-april/6-april-observation-note.md)
 - [Assignment_ “When Chat Systems Break” - A Realistic Sharding Simulation.md](Assignment_%20%E2%80%9CWhen%20Chat%20Systems%20Break%E2%80%9D%20-%20A%20Realistic%20Sharding%20Simulation.md)
 - [Assignment_ “When Chat Systems Break” - A Realistic Sharding Simulation.pdf](Assignment_%20%E2%80%9CWhen%20Chat%20Systems%20Break%E2%80%9D%20-%20A%20Realistic%20Sharding%20Simulation.pdf)
