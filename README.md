@@ -18,8 +18,8 @@ Build a chat simulation from a naive single-server system toward sharded behavio
 | 4 April | Scaling Awareness | Large-load simulation + short observation note | Done | [4th-april/4-april-scaling-awareness.py](4th-april/4-april-scaling-awareness.py), [4th-april/4-april-observation-note.md](4th-april/4-april-observation-note.md) |
 | 5 April | Shards Introduction | Independent shards storing data separately | Done | [5th-april/5-april-shards-introduction.py](5th-april/5-april-shards-introduction.py), [5th-april/5-april-output-note.md](5th-april/5-april-output-note.md) |
 | 6 April | User-Based Sharding | Route using user_id + shard distribution output | Done | [6th-april/6-april-user-based-sharding.py](6th-april/6-april-user-based-sharding.py), [6th-april/6-april-observation-note.md](6th-april/6-april-observation-note.md) |
-| 7 April | Channel-Based Sharding | Route using channel_id + comparison note | Pending | Not started |
-| 8 April | Hash-Based Sharding | Hash routing + key-choice explanation | Pending | Not started |
+| 7 April | Channel-Based Sharding | Route using channel_id + comparison note | Done | [7th-april/7-april-channel-based-sharding.py](7th-april/7-april-channel-based-sharding.py), [7th-april/7-april-comparison-note.md](7th-april/7-april-comparison-note.md) |
+| 8 April | Hash-Based Sharding | Hash routing + key-choice explanation | Done | [8th-april/8-april-hash-based-sharding.py](8th-april/8-april-hash-based-sharding.py), [8th-april/8-april-key-choice-note.md](8th-april/8-april-key-choice-note.md) |
 | 9 April | Stress + Failure Simulation | Logs + final code + analysis | Pending | Not started |
 
 ## Work Completed So Far
@@ -59,6 +59,18 @@ Implemented user-based sharding and simulated influencer spike:
 - one influencer generated 5,000 messages
 - clear imbalance observed in shard distribution
 
+### Day 7 (7 April)
+Implemented channel-based sharding and compared with Day 6:
+- routing rule based on `channel_id % num_shards`
+- one viral channel generated 5,000 messages
+- hotspot remained (about 75% load on one shard), demonstrating channel popularity risk
+
+### Day 8 (8 April)
+Implemented hash-based sharding with explicit key-choice reasoning:
+- selected composite key `user_id:channel_id`
+- used MD5 hash modulo shard count for routing
+- observed near-even load distribution under mixed spike traffic
+
 ## How to Run
 
 From repository root:
@@ -69,6 +81,8 @@ python 3rd-april/3-april-basic-chat-system.py
 python 4th-april/4-april-scaling-awareness.py
 python 5th-april/5-april-shards-introduction.py
 python 6th-april/6-april-user-based-sharding.py
+python 7th-april/7-april-channel-based-sharding.py
+python 8th-april/8-april-hash-based-sharding.py
 ```
 
 ## Repository Structure
@@ -81,5 +95,9 @@ python 6th-april/6-april-user-based-sharding.py
 - [5th-april/5-april-output-note.md](5th-april/5-april-output-note.md)
 - [6th-april/6-april-user-based-sharding.py](6th-april/6-april-user-based-sharding.py)
 - [6th-april/6-april-observation-note.md](6th-april/6-april-observation-note.md)
+- [7th-april/7-april-channel-based-sharding.py](7th-april/7-april-channel-based-sharding.py)
+- [7th-april/7-april-comparison-note.md](7th-april/7-april-comparison-note.md)
+- [8th-april/8-april-hash-based-sharding.py](8th-april/8-april-hash-based-sharding.py)
+- [8th-april/8-april-key-choice-note.md](8th-april/8-april-key-choice-note.md)
 - [Assignment_ “When Chat Systems Break” - A Realistic Sharding Simulation.md](Assignment_%20%E2%80%9CWhen%20Chat%20Systems%20Break%E2%80%9D%20-%20A%20Realistic%20Sharding%20Simulation.md)
 - [Assignment_ “When Chat Systems Break” - A Realistic Sharding Simulation.pdf](Assignment_%20%E2%80%9CWhen%20Chat%20Systems%20Break%E2%80%9D%20-%20A%20Realistic%20Sharding%20Simulation.pdf)
