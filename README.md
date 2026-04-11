@@ -20,7 +20,7 @@ Build a chat simulation from a naive single-server system toward sharded behavio
 | 6 April | User-Based Sharding | Route using user_id + shard distribution output | Done | [6th-april/6-april-user-based-sharding.py](6th-april/6-april-user-based-sharding.py), [6th-april/6-april-observation-note.md](6th-april/6-april-observation-note.md) |
 | 7 April | Channel-Based Sharding | Route using channel_id + comparison note | Done | [7th-april/7-april-channel-based-sharding.py](7th-april/7-april-channel-based-sharding.py), [7th-april/7-april-comparison-note.md](7th-april/7-april-comparison-note.md) |
 | 8 April | Hash-Based Sharding | Hash routing + key-choice explanation | Done | [8th-april/8-april-hash-based-sharding.py](8th-april/8-april-hash-based-sharding.py), [8th-april/8-april-key-choice-note.md](8th-april/8-april-key-choice-note.md) |
-| 9 April | Stress + Failure Simulation | Logs + final code + analysis | Pending | Not started |
+| 9 April | Stress + Failure Simulation | Logs + final code + analysis | Done | [9th-april/9-april-stress-failure-simulation.py](9th-april/9-april-stress-failure-simulation.py), [10th-april/10-april-final-analysis.md](10th-april/10-april-final-analysis.md) |
 
 ## Work Completed So Far
 
@@ -71,6 +71,14 @@ Implemented hash-based sharding with explicit key-choice reasoning:
 - used MD5 hash modulo shard count for routing
 - observed near-even load distribution under mixed spike traffic
 
+### Day 9 (9 April)
+Implemented full stress + failure simulation across all 3 strategies:
+- normal day, viral event, and extreme spike scenarios
+- one shard disabled during test to simulate failure
+- hotspot detection warning for >50% shard load
+- cross-shard query for last 10 channel messages
+- system evolution study across 3, 6, and 10 shards
+
 ## How to Run
 
 From repository root:
@@ -83,6 +91,7 @@ python 5th-april/5-april-shards-introduction.py
 python 6th-april/6-april-user-based-sharding.py
 python 7th-april/7-april-channel-based-sharding.py
 python 8th-april/8-april-hash-based-sharding.py
+python 9th-april/9-april-stress-failure-simulation.py
 ```
 
 ## Repository Structure
@@ -99,5 +108,7 @@ python 8th-april/8-april-hash-based-sharding.py
 - [7th-april/7-april-comparison-note.md](7th-april/7-april-comparison-note.md)
 - [8th-april/8-april-hash-based-sharding.py](8th-april/8-april-hash-based-sharding.py)
 - [8th-april/8-april-key-choice-note.md](8th-april/8-april-key-choice-note.md)
+- [9th-april/9-april-stress-failure-simulation.py](9th-april/9-april-stress-failure-simulation.py)
+- [10th-april/10-april-final-analysis.md](10th-april/10-april-final-analysis.md)
 - [Assignment_ “When Chat Systems Break” - A Realistic Sharding Simulation.md](Assignment_%20%E2%80%9CWhen%20Chat%20Systems%20Break%E2%80%9D%20-%20A%20Realistic%20Sharding%20Simulation.md)
 - [Assignment_ “When Chat Systems Break” - A Realistic Sharding Simulation.pdf](Assignment_%20%E2%80%9CWhen%20Chat%20Systems%20Break%E2%80%9D%20-%20A%20Realistic%20Sharding%20Simulation.pdf)

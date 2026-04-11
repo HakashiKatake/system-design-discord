@@ -1,0 +1,312 @@
+Day 9: Stress + Failure Simulation
+
+[User-based] Scenario 1 - Normal day
+Shard 0 (UP): 1685 messages (33.70%)
+Shard 1 (UP): 1640 messages (32.80%)
+Shard 2 (UP): 1675 messages (33.50%)
+Total writes attempted: 5000
+Stored messages: 5000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[User-based] Scenario 2 - Viral event
+Shard 0 (UP): 5034 messages (33.56%)
+Shard 1 (UP): 5029 messages (33.53%)
+Shard 2 (UP): 4937 messages (32.91%)
+Total writes attempted: 15000
+Stored messages: 15000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[User-based] Scenario 3 - Extreme spike + shard failure
+Shard 0 (UP): 9088 messages (39.42%)
+Shard 1 (DOWN): 5029 messages (21.81%)
+Shard 2 (UP): 8937 messages (38.77%)
+Total writes attempted: 27000
+Stored messages: 23054
+Dropped writes: 3946
+OK: no hotspot above 50%
+Cross-shard query (channel=7): last 10 message IDs = [26998, 26776, 26757, 26532, 26384, 26327, 26266, 26238, 26184, 26104]
+Shards checked for query: 3
+
+[Channel-based] Scenario 1 - Normal day
+Shard 0 (UP): 1658 messages (33.16%)
+Shard 1 (UP): 1685 messages (33.70%)
+Shard 2 (UP): 1657 messages (33.14%)
+Total writes attempted: 5000
+Stored messages: 5000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[Channel-based] Scenario 2 - Viral event
+Shard 0 (UP): 2276 messages (15.17%)
+Shard 1 (UP): 10367 messages (69.11%)
+Shard 2 (UP): 2357 messages (15.71%)
+Total writes attempted: 15000
+Stored messages: 15000
+Dropped writes: 0
+WARNING: hotspot detected (69.11% on busiest shard)
+
+[Channel-based] Scenario 3 - Extreme spike + shard failure
+Shard 0 (UP): 6155 messages (26.84%)
+Shard 1 (DOWN): 10367 messages (45.22%)
+Shard 2 (UP): 6406 messages (27.94%)
+Total writes attempted: 27000
+Stored messages: 22928
+Dropped writes: 4072
+OK: no hotspot above 50%
+Cross-shard query (channel=7): last 10 message IDs = [15000, 14999, 14998, 14997, 14996, 14995, 14994, 14993, 14992, 14991]
+Shards checked for query: 3
+
+[Hash-based(user:channel)] Scenario 1 - Normal day
+Shard 0 (UP): 1643 messages (32.86%)
+Shard 1 (UP): 1627 messages (32.54%)
+Shard 2 (UP): 1730 messages (34.60%)
+Total writes attempted: 5000
+Stored messages: 5000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[Hash-based(user:channel)] Scenario 2 - Viral event
+Shard 0 (UP): 4927 messages (32.85%)
+Shard 1 (UP): 4967 messages (33.11%)
+Shard 2 (UP): 5106 messages (34.04%)
+Total writes attempted: 15000
+Stored messages: 15000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[Hash-based(user:channel)] Scenario 3 - Extreme spike + shard failure
+Shard 0 (UP): 8927 messages (38.77%)
+Shard 1 (DOWN): 4967 messages (21.57%)
+Shard 2 (UP): 9130 messages (39.65%)
+Total writes attempted: 27000
+Stored messages: 23024
+Dropped writes: 3976
+OK: no hotspot above 50%
+Cross-shard query (channel=7): last 10 message IDs = [26998, 26891, 26757, 26646, 26555, 26384, 26338, 26327, 26266, 26238]
+Shards checked for query: 3
+
+Final Comparison - 3 shards
+Strategy | Stored | Dropped | Max Shard Load % | Query Shards Checked | Query Results
+------------------------------------------------------------------------------------------
+User-based | 23054 | 3946 | 39.42% | 3 | 10
+Channel-based | 22928 | 4072 | 45.22% | 3 | 10
+Hash-based | 23024 | 3976 | 39.65% | 3 | 10
+
+System Evolution Check (3 -> 6 shards) using same mixed workload
+
+[User-based] Scenario 1 - Normal day
+Shard 0 (UP): 1687 messages (33.74%)
+Shard 1 (UP): 1636 messages (32.72%)
+Shard 2 (UP): 1677 messages (33.54%)
+Total writes attempted: 5000
+Stored messages: 5000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[User-based] Scenario 2 - Viral event
+Shard 0 (UP): 4952 messages (33.01%)
+Shard 1 (UP): 4964 messages (33.09%)
+Shard 2 (UP): 5084 messages (33.89%)
+Total writes attempted: 15000
+Stored messages: 15000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[User-based] Scenario 3 - Extreme spike + shard failure
+Shard 0 (UP): 8940 messages (38.81%)
+Shard 1 (DOWN): 4964 messages (21.55%)
+Shard 2 (UP): 9131 messages (39.64%)
+Total writes attempted: 27000
+Stored messages: 23035
+Dropped writes: 3965
+OK: no hotspot above 50%
+Cross-shard query (channel=7): last 10 message IDs = [26962, 26943, 26926, 26822, 26780, 26757, 26746, 26624, 26531, 26336]
+Shards checked for query: 3
+
+[User-based] Scenario 1 - Normal day
+Shard 0 (UP): 812 messages (16.24%)
+Shard 1 (UP): 824 messages (16.48%)
+Shard 2 (UP): 836 messages (16.72%)
+Shard 3 (UP): 875 messages (17.50%)
+Shard 4 (UP): 812 messages (16.24%)
+Shard 5 (UP): 841 messages (16.82%)
+Total writes attempted: 5000
+Stored messages: 5000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[User-based] Scenario 2 - Viral event
+Shard 0 (UP): 2427 messages (16.18%)
+Shard 1 (UP): 2523 messages (16.82%)
+Shard 2 (UP): 2555 messages (17.03%)
+Shard 3 (UP): 2525 messages (16.83%)
+Shard 4 (UP): 2441 messages (16.27%)
+Shard 5 (UP): 2529 messages (16.86%)
+Total writes attempted: 15000
+Stored messages: 15000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[User-based] Scenario 3 - Extreme spike + shard failure
+Shard 0 (UP): 4387 messages (17.52%)
+Shard 1 (DOWN): 2523 messages (10.08%)
+Shard 2 (UP): 4575 messages (18.28%)
+Shard 3 (UP): 4553 messages (18.19%)
+Shard 4 (UP): 4439 messages (17.73%)
+Shard 5 (UP): 4556 messages (18.20%)
+Total writes attempted: 27000
+Stored messages: 25033
+Dropped writes: 1967
+OK: no hotspot above 50%
+Cross-shard query (channel=7): last 10 message IDs = [26962, 26943, 26926, 26923, 26822, 26780, 26757, 26746, 26624, 26531]
+Shards checked for query: 6
+
+[Channel-based] Scenario 1 - Normal day
+Shard 0 (UP): 1592 messages (31.84%)
+Shard 1 (UP): 1741 messages (34.82%)
+Shard 2 (UP): 1667 messages (33.34%)
+Total writes attempted: 5000
+Stored messages: 5000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[Channel-based] Scenario 2 - Viral event
+Shard 0 (UP): 2270 messages (15.13%)
+Shard 1 (UP): 10396 messages (69.31%)
+Shard 2 (UP): 2334 messages (15.56%)
+Total writes attempted: 15000
+Stored messages: 15000
+Dropped writes: 0
+WARNING: hotspot detected (69.31% on busiest shard)
+
+[Channel-based] Scenario 3 - Extreme spike + shard failure
+Shard 0 (UP): 6162 messages (26.85%)
+Shard 1 (DOWN): 10396 messages (45.30%)
+Shard 2 (UP): 6393 messages (27.85%)
+Total writes attempted: 27000
+Stored messages: 22951
+Dropped writes: 4049
+OK: no hotspot above 50%
+Cross-shard query (channel=7): last 10 message IDs = [15000, 14999, 14998, 14997, 14996, 14995, 14994, 14993, 14992, 14991]
+Shards checked for query: 3
+
+[Channel-based] Scenario 1 - Normal day
+Shard 0 (UP): 809 messages (16.18%)
+Shard 1 (UP): 912 messages (18.24%)
+Shard 2 (UP): 842 messages (16.84%)
+Shard 3 (UP): 783 messages (15.66%)
+Shard 4 (UP): 829 messages (16.58%)
+Shard 5 (UP): 825 messages (16.50%)
+Total writes attempted: 5000
+Stored messages: 5000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[Channel-based] Scenario 2 - Viral event
+Shard 0 (UP): 1148 messages (7.65%)
+Shard 1 (UP): 9262 messages (61.75%)
+Shard 2 (UP): 1228 messages (8.19%)
+Shard 3 (UP): 1122 messages (7.48%)
+Shard 4 (UP): 1134 messages (7.56%)
+Shard 5 (UP): 1106 messages (7.37%)
+Total writes attempted: 15000
+Stored messages: 15000
+Dropped writes: 0
+WARNING: hotspot detected (61.75% on busiest shard)
+
+[Channel-based] Scenario 3 - Extreme spike + shard failure
+Shard 0 (UP): 3121 messages (12.54%)
+Shard 1 (DOWN): 9262 messages (37.22%)
+Shard 2 (UP): 3316 messages (13.33%)
+Shard 3 (UP): 3041 messages (12.22%)
+Shard 4 (UP): 3068 messages (12.33%)
+Shard 5 (UP): 3077 messages (12.36%)
+Total writes attempted: 27000
+Stored messages: 24885
+Dropped writes: 2115
+OK: no hotspot above 50%
+Cross-shard query (channel=7): last 10 message IDs = [15000, 14999, 14998, 14997, 14996, 14995, 14994, 14993, 14992, 14991]
+Shards checked for query: 6
+
+[Hash-based(user:channel)] Scenario 1 - Normal day
+Shard 0 (UP): 1690 messages (33.80%)
+Shard 1 (UP): 1614 messages (32.28%)
+Shard 2 (UP): 1696 messages (33.92%)
+Total writes attempted: 5000
+Stored messages: 5000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[Hash-based(user:channel)] Scenario 2 - Viral event
+Shard 0 (UP): 5065 messages (33.77%)
+Shard 1 (UP): 5002 messages (33.35%)
+Shard 2 (UP): 4933 messages (32.89%)
+Total writes attempted: 15000
+Stored messages: 15000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[Hash-based(user:channel)] Scenario 3 - Extreme spike + shard failure
+Shard 0 (UP): 9109 messages (39.64%)
+Shard 1 (DOWN): 5002 messages (21.76%)
+Shard 2 (UP): 8871 messages (38.60%)
+Total writes attempted: 27000
+Stored messages: 22982
+Dropped writes: 4018
+OK: no hotspot above 50%
+Cross-shard query (channel=7): last 10 message IDs = [26962, 26943, 26866, 26822, 26757, 26624, 26531, 26450, 26449, 26336]
+Shards checked for query: 3
+
+[Hash-based(user:channel)] Scenario 1 - Normal day
+Shard 0 (UP): 845 messages (16.90%)
+Shard 1 (UP): 814 messages (16.28%)
+Shard 2 (UP): 828 messages (16.56%)
+Shard 3 (UP): 845 messages (16.90%)
+Shard 4 (UP): 800 messages (16.00%)
+Shard 5 (UP): 868 messages (17.36%)
+Total writes attempted: 5000
+Stored messages: 5000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[Hash-based(user:channel)] Scenario 2 - Viral event
+Shard 0 (UP): 2535 messages (16.90%)
+Shard 1 (UP): 2519 messages (16.79%)
+Shard 2 (UP): 2397 messages (15.98%)
+Shard 3 (UP): 2530 messages (16.87%)
+Shard 4 (UP): 2483 messages (16.55%)
+Shard 5 (UP): 2536 messages (16.91%)
+Total writes attempted: 15000
+Stored messages: 15000
+Dropped writes: 0
+OK: no hotspot above 50%
+
+[Hash-based(user:channel)] Scenario 3 - Extreme spike + shard failure
+Shard 0 (UP): 4573 messages (18.32%)
+Shard 1 (DOWN): 2519 messages (10.09%)
+Shard 2 (UP): 4345 messages (17.40%)
+Shard 3 (UP): 4536 messages (18.17%)
+Shard 4 (UP): 4469 messages (17.90%)
+Shard 5 (UP): 4526 messages (18.13%)
+Total writes attempted: 27000
+Stored messages: 24968
+Dropped writes: 2032
+OK: no hotspot above 50%
+Cross-shard query (channel=7): last 10 message IDs = [26962, 26943, 26923, 26866, 26822, 26780, 26757, 26746, 26624, 26606]
+Shards checked for query: 6
+
+Evolution Summary - 3 shards
+Strategy | Stored | Dropped | Max Shard Load % | Query Shards Checked | Query Results
+------------------------------------------------------------------------------------------
+User-based | 23035 | 3965 | 39.64% | 3 | 10
+Channel-based | 22951 | 4049 | 45.30% | 3 | 10
+Hash-based | 22982 | 4018 | 39.64% | 3 | 10
+
+Evolution Summary - 6 shards
+Strategy | Stored | Dropped | Max Shard Load % | Query Shards Checked | Query Results
+------------------------------------------------------------------------------------------
+User-based | 25033 | 1967 | 18.28% | 6 | 10
+Channel-based | 24885 | 2115 | 37.22% | 6 | 10
+Hash-based | 24968 | 2032 | 18.32% | 6 | 10
